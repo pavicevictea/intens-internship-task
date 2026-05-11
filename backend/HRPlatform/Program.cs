@@ -1,5 +1,7 @@
 
+using HRPlatform.Core.RepositoryInterfaces;
 using HRPlatform.Infrastructure;
+using HRPlatform.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace HRPlatform
@@ -19,6 +21,9 @@ namespace HRPlatform
 
             builder.Services.AddDbContext<PlatformDbContext>(opt =>
                 opt.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+            builder.Services.AddScoped<ICandidateRepository, CandidateRepository>();
+            builder.Services.AddScoped<ISkillRepository, SkillRepository>();
 
             var app = builder.Build();
 
