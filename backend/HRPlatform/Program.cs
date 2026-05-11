@@ -1,5 +1,7 @@
 
 using HRPlatform.Core.RepositoryInterfaces;
+using HRPlatform.Core.Services;
+using HRPlatform.Core.Services.Interfaces;
 using HRPlatform.Infrastructure;
 using HRPlatform.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -24,6 +26,9 @@ namespace HRPlatform
 
             builder.Services.AddScoped<ICandidateRepository, CandidateRepository>();
             builder.Services.AddScoped<ISkillRepository, SkillRepository>();
+
+            builder.Services.AddScoped<ICandidateService, CandidateService>();
+            builder.Services.AddScoped<ISkillService, SkillService>();
 
             var app = builder.Build();
 

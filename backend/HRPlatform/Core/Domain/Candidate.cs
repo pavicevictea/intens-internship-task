@@ -20,5 +20,13 @@
             Email = email;
         }
 
+        public void UpdateInfo(string fullName, DateTime dateOfBirth, string contactNumber, string email)
+        {
+            FullName = fullName;
+            DateOfBirth = dateOfBirth;
+            ContactNumber = contactNumber;
+            Email = email;
+        }
+
     }
 }
