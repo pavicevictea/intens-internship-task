@@ -2,7 +2,7 @@
 {
     public class Skills
     {
-        public int SkillId { get; private set; }
+        public int SkillsId { get; private set; }
         public string Name { get; private set; }
 
         public ICollection<Candidate> Candidates { get; private set; } = new List<Candidate>();
