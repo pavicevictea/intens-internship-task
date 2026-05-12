@@ -27,7 +27,7 @@ namespace HRPlatform.Core.Services
                 .FirstOrDefault(s => s.Name.Equals(trimmedName, StringComparison.OrdinalIgnoreCase));
             if (existing != null)
             {
-                throw new Execution("Skill with this name already exists.");
+                throw new Exception("Skill with this name already exists.");
             }
 
             var skill = new Skills(trimmedName);
