@@ -32,7 +32,7 @@ namespace HRPlatform.Core.Services
         {
             var candidate = new Candidate(dto.FullName, dto.DateOfBirth, dto.ContactNumber, dto.Email);
 
-            var uniqueSkills = dto.Skills.Select(s => s.Trim()).Distinct();
+            var uniqueSkills = dto.Skills.Select(s => s.Trim()).Distinct(StringComparer.OrdinalIgnoreCase); ;
             foreach (var skillName in uniqueSkills)
             {
                 var skill = _skillRepository.GetAll()
@@ -51,7 +51,7 @@ namespace HRPlatform.Core.Services
             candidate.UpdateInfo(dto.FullName, dto.DateOfBirth, dto.ContactNumber, dto.Email);
 
             candidate.Skills.Clear();
-            var uniqueSkills = dto.Skills.Select(s => s.Trim()).Distinct();
+            var uniqueSkills = dto.Skills.Select(s => s.Trim()).Distinct(StringComparer.OrdinalIgnoreCase); ;
             foreach (var skillName in uniqueSkills)
             {
                 var skill = _skillRepository.GetAll()

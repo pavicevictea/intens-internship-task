@@ -5,6 +5,8 @@ VisualStudioVersion = 17.14.37203.1 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRPlatform", "HRPlatform.csproj", "{2F1CE609-51A3-4FA4-98D0-672CC42D1F13}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRPlatform.Tests", "..\HRPlatform.Tests\HRPlatform.Tests.csproj", "{3CACA37F-94C4-4AFA-A14F-A872EBCBA53D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{2F1CE609-51A3-4FA4-98D0-672CC42D1F13}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F1CE609-51A3-4FA4-98D0-672CC42D1F13}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F1CE609-51A3-4FA4-98D0-672CC42D1F13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3CACA37F-94C4-4AFA-A14F-A872EBCBA53D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CACA37F-94C4-4AFA-A14F-A872EBCBA53D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CACA37F-94C4-4AFA-A14F-A872EBCBA53D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CACA37F-94C4-4AFA-A14F-A872EBCBA53D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
