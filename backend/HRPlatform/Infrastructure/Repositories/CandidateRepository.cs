@@ -43,6 +43,7 @@ namespace HRPlatform.Infrastructure.Repositories
 
         public void Delete(Candidate candidate)
         {
+            if (candidate == null) return;
             _context.Candidates.Remove(candidate);
             _context.SaveChanges();
         }

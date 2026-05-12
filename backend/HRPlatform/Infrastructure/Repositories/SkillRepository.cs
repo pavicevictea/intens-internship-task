@@ -32,6 +32,7 @@ namespace HRPlatform.Infrastructure.Repositories
 
         public void Delete(Skills skills)
         {
+            if (skills == null) return;
             _context.Skills.Remove(skills);
             _context.SaveChanges();
         }
