@@ -14,6 +14,8 @@ namespace HRPlatform
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            builder.Services.AddControllers();
+
             // Add services to the container.
             builder.Services.AddAuthorization();
 
@@ -42,6 +44,8 @@ namespace HRPlatform
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
+
+            app.MapControllers();
 
             app.Run();
         }
