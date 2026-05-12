@@ -22,7 +22,15 @@ namespace HRPlatform.Core.Services
 
         public SkillsDto Create(SkillsDto dto)
         {
-            var skill = new Skills(dto.Name);
+            var trimmedName = dto.Name.Trim();
+            var existing = _skillRepository.GetAll()
+                .FirstOrDefault(s => s.Name.Equals(trimmedName, StringComparison.OrdinalIgnoreCase));
+            if (existing != null)
+            {
+                throw new Execution("Skill with this name already exists.");
+            }
+
+            var skill = new Skills(trimmedName);
             var created = _skillRepository.Create(skill);
             return new SkillsDto { Name = created.Name };
         }

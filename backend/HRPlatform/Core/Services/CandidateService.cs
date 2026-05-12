@@ -32,9 +32,12 @@ namespace HRPlatform.Core.Services
         {
             var candidate = new Candidate(dto.FullName, dto.DateOfBirth, dto.ContactNumber, dto.Email);
 
-            foreach (var skillName in dto.Skills)
+            var uniqueSkills = dto.Skills.Select(s => s.Trim()).Distinct();
+            foreach (var skillName in uniqueSkills)
             {
-                var skill = _skillRepository.GetByName(skillName) ?? new Skills(skillName);
+                var skill = _skillRepository.GetAll()
+                                .FirstOrDefault(s => s.Name.Equals(skillName, StringComparison.OrdinalIgnoreCase)) 
+                            ?? new Skills(skillName);
                 candidate.Skills.Add(skill);
             }
 
@@ -48,9 +51,12 @@ namespace HRPlatform.Core.Services
             candidate.UpdateInfo(dto.FullName, dto.DateOfBirth, dto.ContactNumber, dto.Email);
 
             candidate.Skills.Clear();
-            foreach (var skillName in dto.Skills)
+            var uniqueSkills = dto.Skills.Select(s => s.Trim()).Distinct();
+            foreach (var skillName in uniqueSkills)
             {
-                var skill = _skillRepository.GetByName(skillName) ?? new Skills(skillName);
+                var skill = _skillRepository.GetAll()
+                                .FirstOrDefault(s => s.Name.Equals(skillName, StringComparison.OrdinalIgnoreCase))
+                            ?? new Skills(skillName);
                 candidate.Skills.Add(skill);
             }
 
@@ -81,9 +87,12 @@ namespace HRPlatform.Core.Services
         public void RemoveSkillFromCandidate(int id, string skillName)
         {
             var candidate = _candidateRepository.GetById(id);
-            var skill = candidate.Skills.FirstOrDefault(s => s.Name == skillName);
-            candidate.Skills.Remove(skill);
-            _candidateRepository.Update(candidate);
+            var skill = candidate.Skills.FirstOrDefault(s => s.Name.Equals(skillName.Trim(), StringComparison.OrdinalIgnoreCase));
+            if (skill != null)
+            {
+                candidate.Skills.Remove(skill);
+                _candidateRepository.Update(candidate);
+            }
         }
 
         private CandidateDto MapToDto(Candidate c)
